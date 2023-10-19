@@ -1,16 +1,7 @@
 <?php
-require_once("config.php");
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-$pdo = new PDO($dsn, $user, $pass, $options);
-
 $stmt = $pdo->query('SELECT title FROM books');
-
+require_once("connect.php");
+require_once("config.php");
 
 
 ?>
@@ -26,7 +17,11 @@ $stmt = $pdo->query('SELECT title FROM books');
 
 while ($row = $stmt->fetch()) {
     ?>
-    <li><?=$row['title']; ?></li>;
+    <a href="books.php?id=<?= $row["id"]; ?>">
+    <?=$row['title']; ?>
+    </a>
+    <li>
+</li>;
     <?php
 }
     
