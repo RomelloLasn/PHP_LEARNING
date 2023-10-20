@@ -1,8 +1,10 @@
 <?php
-$stmt = $pdo->query('SELECT title FROM books');
-require_once("connect.php");
-require_once("config.php");
 
+require_once("connect.php");
+
+
+
+$stmt = $pdo->query('SELECT * FROM books');
 
 ?>
 <!DOCTYPE html>
@@ -10,27 +12,26 @@ require_once("config.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello php</title>
+    <title>php</title>
 </head>
 <body>
-<?php 
 
+<?php
 while ($row = $stmt->fetch()) {
-    ?>
-    <a href="books.php?id=<?= $row["id"]; ?>">
-    <?=$row['title']; ?>
-    </a>
+    ?> 
     <li>
-</li>;
-    <?php
-}
+        <a href="book.php?id=<?= $row["id"]; ?>">
+        <?=$row['title']; ?>
+        
+    </a>
     
+    </li>;
 
-    ?>
-
-
-  
+<?php    
+}
+?>
 
 </body>
-
 </html>
+
+<?php
