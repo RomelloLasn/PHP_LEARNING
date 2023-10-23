@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("config.php");
@@ -31,12 +30,27 @@ var_dump($book);
     <h1><?= $book["title"]; ?></h1>
     <span style="font-size: 24px;">Aasta</span>
     <span stle="font-size: 32px"><?= $book["release_date"]; ?></span>
-    <span style="font-size: 24px;">autor</span>
-  
+    <span style="font-size 24px;">Autorid</span>
 
 
-    <li>
-        <?= $row['first_name']; ?> <?= $row['last_name']; ?>
+    <ol>
+        <?php
+        while ($row = $stmt->fetch()) {
+            ?>
+
+            <li>
+                <?= $row["first_name"]; ?> <?= $row["last_name"]; ?>
+            </li>
+            <?php
+        }
+        ?>
+    </ol>
+
+
+
+<li>
+    <a href="./edit.php?id=<?= $book["id"]; ?>">Muuda</a>
     </li>
+    
 </body>
 </html>
