@@ -29,8 +29,9 @@ var_dump($book);
 <body>
     <h1><?= $book["title"]; ?></h1>
     <span style="font-size: 24px;">Aasta</span>
-    <span stle="font-size: 32px"><?= $book["release_date"]; ?></span>
-    <span style="font-size 24px;">Autorid</span>
+    <span style="font-size: 32px"><?= $book["release_date"]; ?></span>
+    <span style="font-size: 24px;">Autorid</span>
+    <span style="font.size: 24px"><?= $book["book_authors"]; ?></span>
 
 
     <ol>
