@@ -5,16 +5,15 @@ require_once("connect.php");
 
 
 $id = $_GET["id"];
-
-
+$sql = "DELETE FROM books WHERE id = :id";
 $stmt = $pdo->prepare('SELECT * FROM books WHERE id = :id');
 $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
 var_dump($_POST);
 if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
-    $stmt = $pdo->prepare('UPDATE books SET title = :title, release_date = :release_date WHERE id = :id');
-    $stmt->execute(['title' => $_POST["title"], "id" => $id, 'release_date' => $_POST["year"]]);
-
+    $stmt = $pdo->prepare('UPDATE books SET title = :title, release_date = :release_date WHERE id = :id, author = :author WHERE id = :id,');
+    $stmt->execute(['title' => $_POST["title"], "id" => $id, 'release_date' => $_POST["year"], "id" => $id, 'author'=> $_POST["author"],]);
+    
     header("Location: book.php?id={$id}");
 
 }
@@ -38,7 +37,9 @@ if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
    <br><br>
    Aasta: <input type="text" name="year"  value="<?= $book["release_date"];?>">
    <br><br>
+   Autorid: <input type="text" name="authors" value="<?= $book["author"];?>">
 <button type="submit" name="submit"  value="save">Salvesta</button>
+<button type="submit" name="submit"  value="save">Delete</button>
 </form>
 
 
