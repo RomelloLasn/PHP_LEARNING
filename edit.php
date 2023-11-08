@@ -39,7 +39,7 @@ if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
    <br><br>
    Autorid: <input type="text" name="authors" value="<?= $book["author"];?>">
 <button type="submit" name="submit"  value="save">Salvesta</button>
-<button type="submit" name="submit"  value="save">Delete</button>
+<button type="submit" name="submit"  value="delete">Kustuta</button>
 </form>
 
 

@@ -51,6 +51,7 @@ var_dump($book);
 
 <li>
     <a href="./edit.php?id=<?= $book["id"]; ?>">Muuda</a>
+    <a href="./delete.php?id=<?= $book["id"]; ?>">Kustuta</a>
     </li>
     
 </body>

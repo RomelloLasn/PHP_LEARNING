@@ -4,7 +4,7 @@ require_once("connect.php");
 
 
 
-$stmt = $pdo->query('SELECT * FROM books');
+$stmt = $pdo->query('SELECT * FROM books WHERE is_deleted = 0');
 
 ?>
 <!DOCTYPE html>
