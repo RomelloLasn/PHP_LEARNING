@@ -11,8 +11,8 @@ $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
 var_dump($_POST);
 if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
-    $stmt = $pdo->prepare('UPDATE books SET title = :title, release_date = :release_date WHERE id = :id, author = :author WHERE id = :id,');
-    $stmt->execute(['title' => $_POST["title"], "id" => $id, 'release_date' => $_POST["year"], "id" => $id, 'author'=> $_POST["author"],]);
+    $stmt = $pdo->prepare('UPDATE books SET title = :title, release_date = :release_date WHERE id = :id,');
+    $stmt->execute(['title' => $_POST["title"], "id" => $id, 'release_date' => $_POST["year"],]);
     
     header("Location: book.php?id={$id}");
 
