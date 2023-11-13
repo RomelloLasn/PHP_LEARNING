@@ -1,9 +1,5 @@
 <?php
-$host = 'd118824.mysql.zonevs.eu';
-$db   = 'd118824_bookstore';
-$user = 'd118824_rompsiks';
-$pass = 'tc7gCcs0htQrzw9';
-$charset = 'utf8mb4';
+
 
 require_once("config.php");
 

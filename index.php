@@ -15,6 +15,13 @@ $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted = 0');
     <title>php</title>
 </head>
 <body>
+<form style="text-align:center;" method="get" action="index.php">
+  <label>
+    Search
+    <input type="text"name="keywords" autocomplete="off">
+  </label>
+  <input type="submit" value="Search"><br>
+</form>
 
 <?php
 while ($row = $stmt->fetch()) {

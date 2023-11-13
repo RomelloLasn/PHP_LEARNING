@@ -9,6 +9,10 @@ $sql = "DELETE FROM books WHERE id = :id";
 $stmt = $pdo->prepare('SELECT * FROM books WHERE id = :id');
 $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
+
+$stmt = $pdo->query('SELECT * FROM authors ');
+$book = $stmt->fetch();
+
 var_dump($_POST);
 if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
     $stmt = $pdo->prepare('UPDATE books SET title = :title, release_date = :release_date WHERE id = :id,');
@@ -37,10 +41,32 @@ if ( isset($_POST["submit"]) && $_POST["submit"] == "save" ) {
    <br><br>
    Aasta: <input type="text" name="year"  value="<?= $book["release_date"];?>">
    <br><br>
-   Autorid: <input type="text" name="authors" value="<?= $book["author"];?>">
+   Autorid:<?= $book["authors"];?>
+   <br><br>
+   <form action="edit.php">
+   <select name="authors" id="">
+   <?php
+
+while ($row = $stmt->fetch()) { 
+?> 
+ <option value="">
+    <?=$row['first_name'];?>
+    <?=$row['last_name'];?>
+ </option>;
+ 
+ <?php
+}
+?>
+   </select>
+    
+    
+        
+</form>
+   
 <button type="submit" name="submit"  value="save">Salvesta</button>
 <button type="submit" name="submit"  value="delete">Kustuta</button>
 </form>
+
 
 
 
