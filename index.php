@@ -7,6 +7,7 @@ require_once("connect.php");
 $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted = 0');
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +16,36 @@ $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted = 0');
     <title>php</title>
 </head>
 <body>
-<form style="text-align:center;" method="get" action="index.php">
+
+
+<form  method="get" action="index.php">
   <label>
     Search
-    <input type="text"name="keywords" autocomplete="off">
+    <input type="text"name="keywords" autocomplete="on">
   </label>
   <input type="submit" value="Search"><br>
+
+  <? 
+
+if (asset($_GET['query'])) {
+  $search = $_GET['query'];
+  $query = "SELECT title FROM books WHERE title LIKE '%$search'";
+  $result = mysqli_query($d118824_bookstore, $query);
+
+  if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo '<p>' . $row['name'] . '<php>';
+
+    }
+
+  }
+  else {
+    echo 'Error executing the query';
+  }
+}
+
+?>
+
 </form>
 
 <?php
